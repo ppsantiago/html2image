@@ -46,7 +46,7 @@ app.post('/generate-image', async (req, res) => {
 
       console.log(newHtmlContent)
     // Inicia Puppeteer
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']});
     const page = await browser.newPage();
     
     // Establece el contenido HTML
@@ -85,3 +85,4 @@ app.post('/generate-image', async (req, res) => {
 app.listen(port, () => {
   console.log(`Servidor Express escuchando en http://localhost:${port}`);
 });
+
